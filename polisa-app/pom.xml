@@ -8,5 +8,7 @@
   <modules>
     <module>polisa-domain</module>
     <module>polisa-core</module>
+    <module>polisa-dao</module>
+    <module>polisa-service</module>
   </modules>
 </project>
