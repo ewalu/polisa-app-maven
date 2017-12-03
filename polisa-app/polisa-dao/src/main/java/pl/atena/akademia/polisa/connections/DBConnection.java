@@ -5,12 +5,25 @@ import java.sql.DriverManager;
 
 public class DBConnection {
 	
-	public Connection getConnection() {
+	private static Connection connection = null;
+	
+	private DBConnection () {
+	}
+	
+	public static Connection get() {
+		if(connection == null) {
+			connection = getConnection();
+		}
+		
+		return connection;
+	}
+	
+	public static Connection getConnection() {
 		Connection con = null;
 		
 		try {
 			Class.forName("org.hsqldb.jdbc.JDBCDriver");
-			con = DriverManager.getConnection("jdbc:hsqldb:mydatabase","SA","");
+			con = DriverManager.getConnection("jdbc:hsqldb:myDatabase","SA","");
 			if (con != null) {
 				System.out.println("Sukces");
 			} else {
